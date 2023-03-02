@@ -1,0 +1,7 @@
+kafka:
+  immigrant:
+    producer:
+      clientId: binneling
+      broker-url: http://localhost:9092
+      acks-config: all
+      topic: itverket-immigration
