@@ -22,7 +22,7 @@ internal class ImmigrantConsumerConfiguration {
 
     private fun defaultConsumerConfigs() =
         mapOf(
-            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "http://localhost:9092",
+            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "http://localhost:29092",
             ConsumerConfig.GROUP_ID_CONFIG to "immigrant-v1",
             ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
             ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
