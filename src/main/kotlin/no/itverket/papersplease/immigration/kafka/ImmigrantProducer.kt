@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service
 
 
 @Service
-@EnableConfigurationProperties(ImmigrantProducerProperties::class)
 class ImmigrantProducer(
     private val immigrantProducerProperties: ImmigrantProducerProperties
 ) {
