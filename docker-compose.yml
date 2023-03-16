@@ -12,7 +12,7 @@ services:
     image: confluentinc/cp-kafka:7.3.0
     container_name: broker
     ports:
-      - 29092:29092
+      - "29092:29092"
     depends_on:
       - zookeeper
     environment:
@@ -21,3 +21,14 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092,PLAINTEXT_HOST://192.168.10.132:29092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=binneling
+      - POSTGRES_PASSWORD=hemmelig
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./src/main/resources/sql/:/docker-entrypoint-initdb.d/
