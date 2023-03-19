@@ -1,3 +1,12 @@
+spring:
+  jpa:
+    hibernate.naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    url: jdbc:postgresql://localhost:5432/papers-please
+    username: binneling
+    password: hemmelig
+    driver-class-name: org.postgresql.Driver
+
 server:
   port : 8081
 
@@ -7,4 +16,5 @@ kafka:
       clientId: binneling
       broker-url: http://localhost:29092
       acks-config: all
-      topic: itverket-immigration
+      topics:
+        ZERO: itverket-immigration

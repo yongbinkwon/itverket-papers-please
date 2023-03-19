@@ -26,6 +26,10 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     implementation("org.springframework.kafka:spring-kafka")
+
+    implementation("org.postgresql:postgresql:42.5.4")
+
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 }
 
 tasks.test {

@@ -1,5 +1,7 @@
 package no.itverket.papersplease.immigration
 
+import no.itverket.papersplease.immigration.immigrant.ImmigrationDay
+import no.itverket.papersplease.immigration.immigrationapplication.ImmigrationApplicationResult
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -12,7 +14,7 @@ class ImmigrationController(
 
     @PostMapping
     fun newImmigrant() {
-        immigrationOffice.queueImmigrant()
+        immigrationOffice.queueImmigrant(ImmigrationApplicationResult.RESIDENT, ImmigrationDay.ZERO)
     }
 
 

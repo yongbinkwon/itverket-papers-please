@@ -1,8 +1,10 @@
 package no.itverket.papersplease.immigration.kafka.dto
 
-data class Visa(
+import java.util.*
+
+data class VisaDto(
     val employerName: String,
     val employeeName: String?,
-    val employeeId: String?,
-    val image: String?
+    val employeeId: UUID?,
+    val image: UUID?
 )

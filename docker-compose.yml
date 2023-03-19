@@ -26,6 +26,7 @@ services:
     image: postgres:latest
     restart: always
     environment:
+      - POSTGRES_DB=papers-please
       - POSTGRES_USER=binneling
       - POSTGRES_PASSWORD=hemmelig
     ports:

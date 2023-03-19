@@ -1,0 +1,3 @@
+package no.itverket.papersplease.immigration.immigrationapplication.credentials
+
+interface Credentials

@@ -1,8 +1,11 @@
 package no.itverket.papersplease.immigration.kafka
 
+import no.itverket.papersplease.immigration.immigrant.ImmigrationDay
+import no.itverket.papersplease.immigration.kafka.dto.ImmigrantDto
 import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.springframework.stereotype.Service
+import java.util.*
 
 
 @Service
@@ -14,13 +17,16 @@ class ImmigrantProducer(
         immigrantProducerProperties.producerProperties
     )
 
-    fun publishImmigrant(message: String) {
+    fun publishImmigrant(immigrationDay: ImmigrationDay, processId: UUID, immigrantDto: ImmigrantDto) {
         producer.send(
             ProducerRecord(
-                immigrantProducerProperties.topic,
-                "hei",
-                message
+                topicUrl(immigrationDay),
+                processId.toString(),
+                immigrantDto.json()
             )
         )
     }
+
+    private fun topicUrl(immigrationDay: ImmigrationDay) =
+        immigrantProducerProperties.topics[immigrationDay] ?: throw IllegalArgumentException("topic doesnt exist")
 }

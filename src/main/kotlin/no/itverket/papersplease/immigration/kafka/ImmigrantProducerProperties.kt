@@ -1,5 +1,6 @@
 package no.itverket.papersplease.immigration.kafka
 
+import no.itverket.papersplease.immigration.immigrant.ImmigrationDay
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 import org.springframework.boot.context.properties.ConfigurationProperties
@@ -9,7 +10,7 @@ class ImmigrantProducerProperties(
     clientId: String,
     brokerUrl: String,
     acksConfig: String,
-    val topic: String
+    val topics: Map<ImmigrationDay, String>
 ) {
    val producerProperties = mapOf(
         ProducerConfig.CLIENT_ID_CONFIG to clientId,
