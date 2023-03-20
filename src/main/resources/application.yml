@@ -21,3 +21,8 @@ kafka:
         ONE: itverket-immigration-1
         TWO: itverket-immigration-2
         THREE: itverket-immigration-3
+  immigration-result:
+    consumer:
+      topic: itverket-immigration-result
+      broker-url: http://localhost:29092
+      group-id: placeholder

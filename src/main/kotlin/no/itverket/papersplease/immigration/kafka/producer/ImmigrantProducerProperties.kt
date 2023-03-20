@@ -1,4 +1,4 @@
-package no.itverket.papersplease.immigration.kafka
+package no.itverket.papersplease.immigration.kafka.producer
 
 import no.itverket.papersplease.immigration.immigrant.ImmigrationDay
 import org.apache.kafka.clients.producer.ProducerConfig

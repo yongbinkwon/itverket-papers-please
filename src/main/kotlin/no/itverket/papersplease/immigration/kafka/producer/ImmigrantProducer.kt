@@ -1,7 +1,7 @@
-package no.itverket.papersplease.immigration.kafka
+package no.itverket.papersplease.immigration.kafka.producer
 
 import no.itverket.papersplease.immigration.immigrant.ImmigrationDay
-import no.itverket.papersplease.immigration.kafka.dto.ImmigrantDto
+import no.itverket.papersplease.immigration.kafka.producer.dto.ImmigrantDto
 import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.springframework.stereotype.Service

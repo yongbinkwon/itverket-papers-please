@@ -6,8 +6,8 @@ import no.itverket.papersplease.immigration.immigrationapplication.ImmigrationAp
 import no.itverket.papersplease.immigration.immigrationapplication.ImmigrationApplicationResult
 import no.itverket.papersplease.immigration.immigrationapplication.credentials.visa.Visa
 import no.itverket.papersplease.immigration.immigrationapplication.credentials.visa.VisaCredentials
-import no.itverket.papersplease.immigration.kafka.dto.ImmigrantDto
-import no.itverket.papersplease.immigration.kafka.dto.VisaDto
+import no.itverket.papersplease.immigration.kafka.producer.dto.ImmigrantDto
+import no.itverket.papersplease.immigration.kafka.producer.dto.VisaDto
 import no.itverket.papersplease.immigration.registry.CompanyRegistry
 import no.itverket.papersplease.immigration.registry.RegistryEntry
 import java.util.*

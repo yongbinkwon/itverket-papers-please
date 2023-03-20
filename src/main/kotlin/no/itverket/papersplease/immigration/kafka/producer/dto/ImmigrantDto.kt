@@ -1,4 +1,4 @@
-package no.itverket.papersplease.immigration.kafka.dto
+package no.itverket.papersplease.immigration.kafka.producer.dto
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper

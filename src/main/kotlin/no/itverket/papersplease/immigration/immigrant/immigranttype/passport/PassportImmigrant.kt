@@ -6,8 +6,8 @@ import no.itverket.papersplease.immigration.immigrationapplication.ImmigrationAp
 import no.itverket.papersplease.immigration.immigrationapplication.ImmigrationApplicationResult
 import no.itverket.papersplease.immigration.immigrationapplication.credentials.passport.Passport
 import no.itverket.papersplease.immigration.immigrationapplication.credentials.passport.PassportCredentials
-import no.itverket.papersplease.immigration.kafka.dto.ImmigrantDto
-import no.itverket.papersplease.immigration.kafka.dto.PassportDto
+import no.itverket.papersplease.immigration.kafka.producer.dto.ImmigrantDto
+import no.itverket.papersplease.immigration.kafka.producer.dto.PassportDto
 import java.util.*
 
 open class PassportImmigrant(

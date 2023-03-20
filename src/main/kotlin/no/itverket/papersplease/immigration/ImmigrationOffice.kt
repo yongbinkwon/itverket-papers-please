@@ -8,7 +8,7 @@ import no.itverket.papersplease.immigration.immigrant.immigranttype.visa.VisaImm
 import no.itverket.papersplease.immigration.immigrationapplication.ImmigrationApplicationRepository
 import no.itverket.papersplease.immigration.immigrationapplication.ImmigrationApplicationResult
 import no.itverket.papersplease.immigration.immigrationapplication.ImmigrationApplicationResult.*
-import no.itverket.papersplease.immigration.kafka.ImmigrantProducer
+import no.itverket.papersplease.immigration.kafka.producer.ImmigrantProducer
 import no.itverket.papersplease.immigration.registry.*
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
