@@ -17,4 +17,7 @@ kafka:
       broker-url: http://localhost:29092
       acks-config: all
       topics:
-        ZERO: itverket-immigration
+        ZERO: itverket-immigration-0
+        ONE: itverket-immigration-1
+        TWO: itverket-immigration-2
+        THREE: itverket-immigration-3

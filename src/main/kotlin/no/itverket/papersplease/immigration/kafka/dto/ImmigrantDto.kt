@@ -1,8 +1,10 @@
 package no.itverket.papersplease.immigration.kafka.dto
 
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import java.util.*
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 data class ImmigrantDto(
     val visa: VisaDto? = null,
     val passport: PassportDto? = null,
@@ -16,5 +18,5 @@ data class ImmigrantDto(
         private val objectMapper = jacksonObjectMapper()
     }
 
-    fun json() = objectMapper.writeValueAsString(this)
+    fun json(): String = objectMapper.writeValueAsString(this)
 }
