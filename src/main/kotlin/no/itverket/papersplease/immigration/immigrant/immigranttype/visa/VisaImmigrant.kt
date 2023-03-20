@@ -13,7 +13,7 @@ import no.itverket.papersplease.immigration.registry.RegistryEntry
 import java.util.*
 
 class VisaImmigrant(
-    private val employer: String = listOf("konsulent AS", "salg Inc.", "ledelse Co.").random(),
+    private val employer: String = listOf("konsulent as", "salg inc", "ledelse corp").random(),
     private val employeeId: UUID = UUID.randomUUID(),
     private val registryStrategy: CompanyRegistryStrategy? = null,
     face: UUID = UUID.randomUUID(),

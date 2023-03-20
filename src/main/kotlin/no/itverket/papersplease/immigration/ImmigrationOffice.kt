@@ -35,7 +35,7 @@ class ImmigrationOffice(
         ImmigrationDay.THREE to dayThree
     )
 
-    @Transactional
+
     private fun queueImmigrant(
         expectedResult: ImmigrationApplicationResult,
         immigrationDay: ImmigrationDay
@@ -52,13 +52,13 @@ class ImmigrationOffice(
     }
 
     @Scheduled(initialDelay = 5*1000, fixedDelay = 5*1000)
+    @Transactional
     fun scheduleImmigration() {
         queueImmigrant(
             expectedResult = validStatesByDay[ImmigrationDay.ZERO]?.random() ?: throw Exception(),
             immigrationDay = ImmigrationDay.ZERO
         )
 
-        /*
         queueImmigrant(
             expectedResult = validStatesByDay[ImmigrationDay.ONE]?.random() ?: throw Exception(),
             immigrationDay = ImmigrationDay.ONE
@@ -73,7 +73,7 @@ class ImmigrationOffice(
             expectedResult = validStatesByDay[ImmigrationDay.THREE]?.random() ?: throw Exception(),
             immigrationDay = ImmigrationDay.THREE
         )
-         */
+
     }
 
     private fun randomImmigrant(
@@ -91,5 +91,6 @@ class ImmigrationOffice(
         UNREGISTERED_VISA_IMMIGRANT -> VisaImmigrant.unregisteredVisaImmigrant(processId, immigrationDay)
         INVALID_EMPLOYER -> VisaImmigrant.invalidEmployer(processId, immigrationDay)
         INVALID_VISA_IMAGE -> VisaImmigrant.invalidImage(processId, immigrationDay)
+        else -> throw IllegalStateException("not valid result")
     }
 }

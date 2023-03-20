@@ -16,6 +16,18 @@ internal class ImmigrationResultConsumer(
 ) {
     companion object {
         private val objectMapper = jacksonObjectMapper()
+        private val rejectionMessages = listOf(
+            "refused to let in a single mother of 3 kids >:)",
+            "refused entry to their own parents :)",
+            "kicked out the person who donated them their kidney :D",
+            "denied their childhood love a chance at a new life on the other side of the border :>"
+        )
+
+        private val appovalMessages = listOf(
+            "took a bribe to let a war criminal through",
+            "approved entry for a chronic movie-talker",
+            "let a pineapple-on-pizza-hater in"
+        )
     }
 
     @KafkaListener(
@@ -26,6 +38,13 @@ internal class ImmigrationResultConsumer(
         val groupId = message.key()
         val result: ImmigrationResultDto = objectMapper.readValue(message.value())
         val expectedResult = immigrationApplicationRepository.findByProcessId(result.processId)
-        expectedResult.difference(groupId, result)?.let { println(it) } ?: println("HEIHEI")
+        expectedResult.difference(groupId, result)?.let { println(it) } ?:
+        println(correctResultString(groupId, result.permitted))
     }
+
+    private fun correctResultString(groupId: String, permitted: Boolean) =
+        "$groupId successfully ${correctResultType(permitted)}"
+
+    private fun correctResultType(permitted: Boolean) =
+        if (permitted) appovalMessages.random() else rejectionMessages.random()
 }
