@@ -4,6 +4,7 @@ import jakarta.persistence.*
 import no.itverket.papersplease.immigration.immigrant.ImmigrationDay
 import no.itverket.papersplease.immigration.immigrationapplication.credentials.Credentials
 import no.itverket.papersplease.immigration.kafka.consumer.dto.ImmigrationResultDto
+import no.itverket.papersplease.immigration.kafka.consumer.dto.ResultComparisonDto
 import java.util.*
 
 @Entity
@@ -29,8 +30,15 @@ class ImmigrationApplication(
     @Embedded
     private val credentials: Credentials
 ) {
-    fun asExpected(immigrationResultDto: ImmigrationResultDto) =
-        immigrationResultDto.permitted == expectedResult.permitted && immigrationResultDto.reason == expectedResult
+    fun difference(groupId: String, immigrationResultDto: ImmigrationResultDto) = if (this differentTo immigrationResultDto) ResultComparisonDto(
+        groupId = groupId,
+        processId = immigrationResultDto.processId,
+        expected = expectedResult,
+        actually = immigrationResultDto.reason
+    ) else null
+
+    private infix fun differentTo(immigrationResultDto: ImmigrationResultDto) =
+        immigrationResultDto.permitted != expectedResult.permitted || immigrationResultDto.reason != expectedResult
 
     override fun equals(other: Any?) = this === other || other is ImmigrationApplication && this.equals(other)
 

@@ -26,6 +26,6 @@ internal class ImmigrationResultConsumer(
         val groupId = message.key()
         val result: ImmigrationResultDto = objectMapper.readValue(message.value())
         val expectedResult = immigrationApplicationRepository.findByProcessId(result.processId)
-        if (expectedResult.asExpected(result)) println("WOWOWOWOWOWOOWOW") else println("NOOOOOO")
+        expectedResult.difference(groupId, result)?.let { println(it) } ?: println("HEIHEI")
     }
 }
