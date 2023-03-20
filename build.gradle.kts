@@ -5,7 +5,7 @@ plugins {
     kotlin("plugin.spring") version "1.8.10"
     id("org.springframework.boot") version "3.0.3"
     id("io.spring.dependency-management") version "1.1.0"
-    id("org.jetbrains.kotlin.plugin.noarg") version "1.8.10"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.8.10"
     application
 }
 

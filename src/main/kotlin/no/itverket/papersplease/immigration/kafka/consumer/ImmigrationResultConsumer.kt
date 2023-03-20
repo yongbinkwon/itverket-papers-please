@@ -2,6 +2,7 @@ package no.itverket.papersplease.immigration.kafka.consumer
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import no.itverket.papersplease.immigration.immigrationapplication.ImmigrationApplicationRepository
 import no.itverket.papersplease.immigration.kafka.consumer.dto.ImmigrationResultDto
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.springframework.kafka.annotation.KafkaListener
@@ -10,7 +11,9 @@ import java.util.*
 
 
 @Service
-internal class ImmigrationResultConsumer {
+internal class ImmigrationResultConsumer(
+    private val immigrationApplicationRepository: ImmigrationApplicationRepository
+) {
     companion object {
         private val objectMapper = jacksonObjectMapper()
     }
@@ -20,8 +23,9 @@ internal class ImmigrationResultConsumer {
         containerFactory = "immigrationResultListenerContainerFactory"
     )
     fun receive(message: ConsumerRecord<String, String>) {
-        val processId = UUID.fromString(message.key())
+        val groupId = message.key()
         val result: ImmigrationResultDto = objectMapper.readValue(message.value())
-        println(result)
+        val expectedResult = immigrationApplicationRepository.findByProcessId(result.processId)
+        if (expectedResult.asExpected(result)) println("WOWOWOWOWOWOOWOW") else println("NOOOOOO")
     }
 }
